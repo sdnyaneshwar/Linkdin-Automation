@@ -18,6 +18,10 @@ const postSchema = new mongoose.Schema({
         ref: "User",
         required: true,
     },
+    dateTime: {
+        type: Date,
+        required: true,
+    },
 }, {
     timestamps: true,
 });
