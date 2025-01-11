@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import ManagePost from '../componets/ManagePost';
+import ProfileOptimize from '../componets/ProfileOptimize';
+import SummaryGenerator from '../componets/SummeryGenerator';
+import Home from '../componets/Home';
 
 const Dashboard = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -9,8 +12,8 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="bg-blue-400 w-full flex h-screen fixed">
-      <div className="w-[20vw] h-full bg-slate-800">
+    <div className="bg-blue-400 w-full flex h-screen ">
+      <div className="w-[20vw] h-full bg-slate-800 overflow-y-hidden">
         {/* Sidebar content */}
         <div className='flex justify-center mt-5'>
           <div className='text-slate-300 font-bold text-2xl'>
@@ -38,29 +41,29 @@ const Dashboard = () => {
             </li>
             <li
               className={`hover:bg-slate-600  py-1 cursor-pointer px-9 rounded-md ${
-                currentPage === 'settings' ? 'bg-slate-600' : ''
+                currentPage === 'Optimize' ? 'bg-slate-600' : ''
               }`}
-              onClick={() => handlePageChange('settings')}
+              onClick={() => handlePageChange('Optimize')}
             >
-              Settings
+              Optimize
             </li>
             <li
               className={`hover:bg-slate-600  py-1 cursor-pointer px-9 rounded-md ${
-                currentPage === 'logout' ? 'bg-slate-600' : ''
+                currentPage === 'summary' ? 'bg-slate-600' : ''
               }`}
-              onClick={() => handlePageChange('logout')}
+              onClick={() => handlePageChange('summary')}
             >
-              Logout
+              Summary Generator
             </li>
           </ul>
         </div>
       </div>
-      <div className="w-[80vw] h-full bg-blue-50">
+      <div className="w-[80vw] h-full bg-blue-50 overflow-y-auto">
         {/* Main content */}
         {currentPage === 'home' && (
           <div className="p-10">
-            <h1 className="text-3xl font-bold mb-4">Home</h1>
-            <p className="text-lg">This is the home page content.</p>
+            <Home/>
+            
           </div>
         )}
         {currentPage === 'post' && (
@@ -68,17 +71,15 @@ const Dashboard = () => {
             <ManagePost/>
           </div>
         )}
-        {currentPage === 'settings' && (
+        {currentPage === 'Optimize' && (
           <div className="p-10">
-            <h1 className="text-3xl font-bold mb-4">Settings Page</h1>
-            <p className="text-lg">This is the settings page content.</p>
-          </div>
+           <ProfileOptimize/>
+            </div>
         )}
-        {currentPage === 'logout' && (
-          <div className="p-10">
-            <h1 className="text-3xl font-bold mb-4">Logout Page</h1>
-            <p className="text-lg">This is the logout page content.</p>
-          </div>
+        {currentPage === 'summary' && (
+          <div className="p-10 overflow-y-auto">
+            <SummaryGenerator/>
+            </div>
         )}
       </div>
     </div>
